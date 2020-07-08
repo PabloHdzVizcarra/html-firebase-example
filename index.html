@@ -29,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item logged-in" style='display: none'>
             <a
               class="nav-link"
               href="#"
@@ -38,7 +38,7 @@
               >Sign In</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item logged-in" style='display: none'>
             <a
               class="nav-link"
               href="#"
@@ -47,12 +47,24 @@
               >Sign Up</a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+          <li class="nav-item logged-out" style='display: none'>
+            <a class="nav-link" href="#" id="logout">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
+
+    <!-- Main Content -->
+
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <ul class="list-group posts">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- Modal window -->
     <div
@@ -147,8 +159,14 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
-                Sign In
+              <button type="submit" class="btn btn-secondary btn-block">
+                Login
+              </button>
+              <button type="button" class="btn btn-primary btn-block" id="googleLogin">
+                Login with Google
+              </button>
+              <button type="button" class="btn btn-primary btn-block" id="facebookLogin">
+                Login with Facebbok
               </button>
             </form>
           </div>
@@ -180,6 +198,7 @@
         https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -196,6 +215,7 @@
       firebase.initializeApp(firebaseConfig);
 
       const auth = firebase.auth();
+      const fs = firebase.firestore();
     </script>
 
     <!-- Custom Code -->
